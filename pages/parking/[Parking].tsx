@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import ParkingInfo from "../Components/ParkingInfo";
 import ParkingCanvas from "../Canvas/ParkingCanvas";
-import TestCanvas from "../Canvas/TestCanvas";
+import CanvasTest from "../Canvas/CanvasTest";
 
 interface Detail {
   id: number;
@@ -105,7 +105,7 @@ const Parking = () => {
         canParking={canParking}
       />
 
-      {parkingId === "1" && <TestCanvas array={parkingChk} />}
+      {parkingId === "1" && <CanvasTest array={parkingChk} />}
       {parkingId === "2" && <ParkingCanvas array={parkingChk} />}
     </ParkingContainer>
   );

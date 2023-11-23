@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import { carPosition } from "./parkingData";
 
 interface ParkingData {
   array: boolean[] | undefined;
@@ -12,6 +11,51 @@ interface IsParking {
   vertical: boolean;
   disable: boolean;
 }
+
+const carPosition: IsParking[] = [
+  {
+    id: 0,
+    carX: 132,
+    carY: 155,
+    vertical: true,
+    disable: false,
+  },
+  {
+    id: 1,
+    carX: 190,
+    carY: 155,
+    vertical: true,
+    disable: false,
+  },
+  {
+    id: 2,
+    carX: 255,
+    carY: 225,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 3,
+    carX: 255,
+    carY: 282,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 4,
+    carX: 255,
+    carY: 342,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 5,
+    carX: 255,
+    carY: 412,
+    vertical: false,
+    disable: true,
+  },
+];
 
 const ParkingCanvas = ({ array }: ParkingData) => {
   const parkingSlot = useRef<HTMLCanvasElement>(null);

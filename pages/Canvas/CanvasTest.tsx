@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import { testCarPosition } from "./parkingData";
 
 interface ParkingData {
   array: boolean[] | undefined;
@@ -13,7 +12,171 @@ interface IsParking {
   disable: boolean;
 }
 
-const TestCanvas = ({ array }: ParkingData) => {
+const testCarPosition: IsParking[] = [
+  {
+    id: 0,
+    carX: 18,
+    carY: 496,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 1,
+    carX: 18,
+    carY: 440,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 2,
+    carX: 18,
+    carY: 384,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 3,
+    carX: 18,
+    carY: 328,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 4,
+    carX: 18,
+    carY: 272,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 5,
+    carX: 18,
+    carY: 216,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 6,
+    carX: 18,
+    carY: 155,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 7,
+    carX: 18,
+    carY: 99,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 8,
+    carX: 138,
+    carY: 496,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 9,
+    carX: 138,
+    carY: 440,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 10,
+    carX: 138,
+    carY: 384,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 11,
+    carX: 138,
+    carY: 328,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 12,
+    carX: 138,
+    carY: 272,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 13,
+    carX: 138,
+    carY: 216,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 14,
+    carX: 138,
+    carY: 155,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 15,
+    carX: 138,
+    carY: 99,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 16,
+    carX: 270,
+    carY: 485,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 17,
+    carX: 270,
+    carY: 400,
+    vertical: false,
+    disable: true,
+  },
+  {
+    id: 18,
+    carX: 270,
+    carY: 328,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 19,
+    carX: 270,
+    carY: 270,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 20,
+    carX: 270,
+    carY: 212,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 21,
+    carX: 270,
+    carY: 155,
+    vertical: false,
+    disable: false,
+  },
+  {
+    id: 22,
+    carX: 270,
+    carY: 95,
+    vertical: false,
+    disable: false,
+  },
+];
+
+const CanvasTest = ({ array }: ParkingData) => {
   const parkingSlot = useRef<HTMLCanvasElement>(null);
   const [isParking, setIsParking] = useState<IsParking[]>();
 
@@ -111,4 +274,4 @@ const TestCanvas = ({ array }: ParkingData) => {
   return <canvas ref={parkingSlot} />;
 };
 
-export default TestCanvas;
+export default CanvasTest;
