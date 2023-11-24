@@ -5,6 +5,7 @@ import axios from "axios";
 import ParkingInfo from "../Components/ParkingInfo";
 import ParkingCanvas from "../Canvas/ParkingCanvas";
 import CanvasTest from "../Canvas/CanvasTest";
+import Header from "../Components/Header";
 
 interface Detail {
   id: number;
@@ -31,19 +32,6 @@ const Parking = () => {
   const [canParking, setCanParking] = useState<number>();
   const [canDisableParking, setCanDisableParking] = useState<number>();
   const [disable, setDisable] = useState<number>(0);
-
-  // useEffect(() => {
-  //   // 컴포넌트가 마운트될 때 setInterval 호출
-  //   const intervalId = setInterval(refresh, 5000);
-
-  //   // 컴포넌트가 언마운트될 때 clearInterval 호출하여 메모리 누수 방지
-  //   return () => clearInterval(intervalId);
-  // }, []); // 빈 배열을 전달하여 마운트 및 언마운트 시에만 실행
-
-  // const refresh = () => {
-  //   // 페이지를 새로고침하는 방법
-  //   window.location.reload();
-  // };
 
   const fetchData = () => {
     axios
@@ -98,6 +86,11 @@ const Parking = () => {
 
   return (
     <ParkingContainer>
+      <Header
+        title={
+          parkingId === "1" ? "실시간 모형 주차장" : "실시간 전산관 주차장"
+        }
+      />
       <ParkingInfo
         count={parkingData?.count}
         disable={disable}
@@ -105,16 +98,26 @@ const Parking = () => {
         canParking={canParking}
       />
 
-      {parkingId === "1" && <CanvasTest array={parkingChk} />}
-      {parkingId === "2" && <ParkingCanvas array={parkingChk} />}
+      <CanvasContainer>
+        {parkingId === "1" && <CanvasTest array={parkingChk} />}
+        {parkingId === "2" && <ParkingCanvas array={parkingChk} />}
+      </CanvasContainer>
     </ParkingContainer>
   );
 };
 
 const ParkingContainer = styled.div`
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CanvasContainer = styled.div`
+  margin-top: 5vh;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
