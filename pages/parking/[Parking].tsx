@@ -52,10 +52,6 @@ const Parking = () => {
     else if (parkingId === "2") setDisable(1);
 
     fetchData();
-
-    const interValId = setInterval(fetchData, 3000);
-
-    return () => clearInterval(interValId);
   }, [parkingId]);
 
   useEffect(() => {
@@ -97,6 +93,11 @@ const Parking = () => {
         disableParking={canDisableParking}
         canParking={canParking}
       />
+      <Button onClick={() => window.location.reload()}>
+        <p>새로고침하여 주차공간 확인하기</p>
+      </Button>
+
+      <p>실시간 데이터 반영에 약간의 시간이 소요될 수 있습니다.</p>
 
       <CanvasContainer>
         {parkingId === "1" && <CanvasTest array={parkingChk} />}
@@ -108,7 +109,7 @@ const Parking = () => {
 
 const ParkingContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,6 +121,27 @@ const CanvasContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Button = styled.button`
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 5vh;
+  background-color: #00b2ff;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px black;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
 `;
 
 export default Parking;

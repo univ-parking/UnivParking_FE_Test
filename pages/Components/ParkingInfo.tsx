@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 interface Info {
@@ -8,6 +9,13 @@ interface Info {
 }
 
 const ParkingInfo = ({ count, disable, disableParking, canParking }: Info) => {
+  const [canParkingNotDisable, setCanParkingNotDisable] = useState<number>(0);
+
+  useEffect(() => {
+    if (canParking && disableParking)
+      setCanParkingNotDisable(canParking - disableParking);
+  }, [disableParking, canParking]);
+
   return (
     <ParkingInfoContainer>
       <AllParkingArea>
@@ -26,7 +34,7 @@ const ParkingInfo = ({ count, disable, disableParking, canParking }: Info) => {
             <p>{disableParking}</p>
           </Count>
           <Count>
-            <p>{canParking && disableParking && canParking - disableParking}</p>
+            <p>{canParkingNotDisable}</p>
           </Count>
         </CountArea>
       </AllParkingArea>
